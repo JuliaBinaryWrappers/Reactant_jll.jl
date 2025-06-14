@@ -20,9 +20,9 @@ JLLWrappers.@declare_library_product(libcusolver, "libcusolver.so.11")
 JLLWrappers.@declare_library_product(libcusparse, "libcusparse.so.12")
 JLLWrappers.@declare_library_product(libnccl, "libnccl.so.2")
 JLLWrappers.@declare_library_product(libnvJitLink, "libnvJitLink.so.12")
+JLLWrappers.@declare_library_product(libnvrtc, "libnvrtc.so.12")
 JLLWrappers.@declare_executable_product(fatbinary)
 JLLWrappers.@declare_file_product(libdevice)
-JLLWrappers.@declare_library_product(libnvrtc, "libnvrtc.so.12")
 JLLWrappers.@declare_library_product(libnvrtc_builtins, "libnvrtc-builtins.so.12.6")
 JLLWrappers.@declare_executable_product(ptxas)
 function __init__()
@@ -129,6 +129,12 @@ function __init__()
         nothing,
     )
 
+    JLLWrappers.@init_library_product(
+        libnvrtc,
+        "lib/libnvrtc.so.12",
+        nothing,
+    )
+
     JLLWrappers.@init_executable_product(
         fatbinary,
         "lib/cuda/bin/fatbinary",
@@ -137,12 +143,6 @@ function __init__()
     JLLWrappers.@init_file_product(
         libdevice,
         "lib/cuda/nvvm/libdevice/libdevice.10.bc",
-    )
-
-    JLLWrappers.@init_library_product(
-        libnvrtc,
-        "lib/libnvrtc.so.12",
-        nothing,
     )
 
     JLLWrappers.@init_library_product(
